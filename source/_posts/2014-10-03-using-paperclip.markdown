@@ -48,7 +48,7 @@ $ rake db:migrate
 * Next, we'll update the form in the edit item view to allow a user to select and upload a photo.
 Notice the addition of `html: {multipart: true}` to the head of the form, as well as the new `file_field` input.
 ``` ruby edit.html.erb
-   <%= form_for @user, html: {multipart: true} do |f| %>
+   <%= form_for @item, html: {multipart: true} do |f| %>
      <%= f.label :image %>
      <%= f.file_field :image %>
      # ...
