@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-04T11:01:45-06:00</updated>
+  <updated>2014-10-04T11:19:45-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -143,6 +143,8 @@ You may specify any of the nicknames you saved earlier to display that image siz
 <p>That&rsquo;s it!</p>
 
 <p>If you&rsquo;d like your shiny new paperclip to work with your application on Heroku, you&rsquo;re going to need to use the aws-sdk gem. You can find that tutorial <a href="" title="#">here, soon.</a></p>
+
+<p><em>Authored by <a href="http://twitter.com/marcgarreau">@MarcGarreau</a>.</em></p>
 ]]></content>
   </entry>
   

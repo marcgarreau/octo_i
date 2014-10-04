@@ -70,3 +70,5 @@ You may specify any of the nicknames you saved earlier to display that image siz
 That's it!
 
 If you'd like your shiny new paperclip to work with your application on Heroku, you're going to need to use the aws-sdk gem. You can find that tutorial [here, soon.]('#')
+
+_Authored by [@MarcGarreau](http://twitter.com/marcgarreau)._
