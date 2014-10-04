@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
->[Paperclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display pictures (and other files) in an application. In this example, we'll go from installation to displaying a picture associated with an item. You may substitute 'item' for any other model in your application.
+>[Paperclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display images (and other files) in an application. In this example, we'll go from installation to displaying an image associated with an item. You may substitute 'item' for any other model in your application.
 
 * Install imagemagick. It can be a real headache, so there is a dedicated guide here: [(Coming soon)](#)
 
