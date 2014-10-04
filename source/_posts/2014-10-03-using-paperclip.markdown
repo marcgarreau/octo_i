@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
->[Paperclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display pictures in an application. In this example, we'll go from installation to adding a picture to a menu item. You may substitute 'item' for any other model in your application.
+>[Paperclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display pictures (and other files) in an application. In this example, we'll go from installation to displaying a picture associated with an item. You may substitute 'item' for any other model in your application.
 
 * Install imagemagick. It can be a real headache, so there is a dedicated guide here: [(Coming soon)](#)
 
@@ -61,7 +61,7 @@ def item_params
 end
 ```
 
-* Now that your image is uploaded, you can display an item's image using an `image_tag`.
+* Now that a user can uploaded an image, you can display an item's image using an `image_tag`.
 You may specify any of the nicknames you saved earlier to display that image size (i.e. `:thumb` instead of `:medium`).
 ``` ruby show.html.erb
 <%= image_tag @item.image.url(:medium) %>
