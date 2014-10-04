@@ -1,2 +1,29 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+body > header {
+  float: left;
+  // border-bottom: 1px solid lighten($text-color-light, 38);
+  border-right: none;
+  text-align: center;
+  h1 {
+  	position: absolute;
+    display: inline-block;
+    font-weight: normal;
+    top: .9em;
+    margin-left: -6.1em;
+    font-size: 2.0em !important;
+  }
+  h2 {
+    color: $subtitle-color;
+    font-size: 1.8em !important;
+    // font-weight: bold;
+    margin-top: 1.2em;
+    margin-bottom: .5em;
+    margin-left: .7em;
+    a, a:visited {
+      color: $subtitle-color;
+      text-decoration: none;
+    }
+  }
+}
