@@ -18,9 +18,9 @@ gem 'paperclip', '~> 4.2.0'
 
 * Install the gem:
 
-```
+{% terminal %}
 $ bundle install
-```
+{% endterminal %}
 
 * Since we're going to allow a user to add a photo to an item, we need to add the relationship and validation to our item.rb file.
 
@@ -36,14 +36,14 @@ modifies the image only if its dimensions are larger than those specified.
 You can view more imagemagick modifiers [here](http://www.imagemagick.org/script/command-line-processing.php#geometry).
 
 * Generate the related migration
-```
+{% terminal %}
 $ rails generate paperclip item image
-```
+{% endterminal %}
 
 * Then run the migration
-```
+{% terminal %}
 $ rake db:migrate
-```
+{% endterminal %}
 
 * Next, we'll update the form in the edit item view to allow a user to select and upload a photo.
 Notice the addition of `html: {multipart: true}` to the head of the form, as well as the new `file_field` input.
