@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-04T11:48:16-06:00</updated>
+  <updated>2014-10-04T11:59:40-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.railsmicrowins.com/blog/2014/10/03/using-paperclip/"/>
     <updated>2014-10-03T22:53:14-06:00</updated>
     <id>http://www.railsmicrowins.com/blog/2014/10/03/using-paperclip</id>
-    <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/thoughtbot/paperclip">Paperclip</a> allows us to upload, store and display pictures in an application. In this example, we&rsquo;ll go from installation to adding a picture to a menu item. You may substitute &lsquo;item&rsquo; for any other model in your application.</p></blockquote>
+    <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/thoughtbot/paperclip">Paperclip</a> allows us to upload, store and display pictures (and other files) in an application. In this example, we&rsquo;ll go from installation to displaying a picture associated with an item. You may substitute &lsquo;item&rsquo; for any other model in your application.</p></blockquote>
 
 <ul>
 <li><p>Install imagemagick. It can be a real headache, so there is a dedicated guide here: <a href="#">(Coming soon)</a></p></li>
@@ -130,7 +130,7 @@ Notice the addition of <code>html: {multipart: true}</code> to the head of the f
 
 
 <ul>
-<li>Now that your image is uploaded, you can display an item&rsquo;s image using an <code>image_tag</code>.
+<li>Now that a user can uploaded an image, you can display an item&rsquo;s image using an <code>image_tag</code>.
 You may specify any of the nicknames you saved earlier to display that image size (i.e. <code>:thumb</code> instead of <code>:medium</code>).</li>
 </ul>
 
