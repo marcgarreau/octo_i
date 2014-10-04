@@ -6,9 +6,7 @@ comments: true
 categories:
 ---
 
-Are we working yet?
-
-perclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display pictures in an application. In this example, we'll go from installation to adding a picture to a menu item. You may substitute 'item' for any other model in your application.
+>[Paperclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and display pictures in an application. In this example, we'll go from installation to adding a picture to a menu item. You may substitute 'item' for any other model in your application.
 
 * Install imagemagick. It can be a real headache, so there is a dedicated guide here: [(Coming soon)](#)
 
@@ -18,11 +16,11 @@ perclip](https://github.com/thoughtbot/paperclip) allows us to upload, store and
 gem 'paperclip', '~> 4.2.0'
 ```
 
-20 * Install the gem:
+* Install the gem:
 
-{% terminal %}
+```
 $ bundle install
-{% endterminal %}
+```
 
 * Since we're going to allow a user to add a photo to an item, we need to add the relationship and validation to our item.rb file.
 
@@ -38,14 +36,14 @@ modifies the image only if its dimensions are larger than those specified.
 You can view more imagemagick modifiers [here](http://www.imagemagick.org/script/command-line-processing.php#geometry).
 
 * Generate the related migration
-{% terminal %}
+```
 $ rails generate paperclip item image
-{% endterminal %}
+```
 
 * Then run the migration
-{% terminal %}
+```
 $ rake db:migrate
-{% endterminal %}
+```
 
 * Next, we'll update the form in the edit item view to allow a user to select and upload a photo.
 Notice the addition of `html: {multipart: true}` to the head of the form, as well as the new `file_field` input.
