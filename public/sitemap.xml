@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://www.railsmicrowins.com/blog/2014/10/07/creating-an-admin-controller-in-rails/</loc>
+    
+    <lastmod>2014-10-07T19:21:52-06:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://www.railsmicrowins.com/blog/2014/10/03/using-paperclip/</loc>
     
     <lastmod>2014-10-03T22:53:14-06:00</lastmod>
@@ -13,21 +21,21 @@
   
   <url>
     <loc>http://www.railsmicrowins.com/404.html</loc>
-    <lastmod>2014-10-04T12:32:55-06:00</lastmod>
+    <lastmod>2014-10-07T20:53:23-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://www.railsmicrowins.com/blog/archives/</loc>
-    <lastmod>2014-10-04T12:32:55-06:00</lastmod>
+    <lastmod>2014-10-07T20:53:23-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://www.railsmicrowins.com/</loc>
-    <lastmod>2014-10-04T12:32:55-06:00</lastmod>
+    <lastmod>2014-10-07T20:53:23-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
