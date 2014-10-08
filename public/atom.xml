@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-07T20:53:23-06:00</updated>
+  <updated>2014-10-08T14:10:35-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Rspec in Rails]]></title>
+    <link href="http://www.railsmicrowins.com/blog/2014/10/08/installing-rspec-in-rails/"/>
+    <updated>2014-10-08T13:34:35-06:00</updated>
+    <id>http://www.railsmicrowins.com/blog/2014/10/08/installing-rspec-in-rails</id>
+    <content type="html"><![CDATA[<p>By default, you&rsquo;ll get a <code>test</code> folder with Minitest ready to rock when you generate a new rails project. Switching to the other team is a cinch though.</p>
+
+<p>To generate a new rails project without a test suite, run:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails new sample_app -T</span></code></pre></td></tr></table></div></div>
+        </div>
+
+
+<p>Or to get rid of your Minitest folder in an existing project:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rm -rf test/</span></code></pre></td></tr></table></div></div>
+        </div>
+
+
+<p>Next, add RSpec to your Gemfile:</p>
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;rspec-rails&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install the new gem:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>bundle install</span></code></pre></td></tr></table></div></div>
+        </div>
+
+
+<p>Then install RSpec:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>$</span></pre></td><td class='code'><pre><code><span class='line command'>rails generate rspec:install</span></code></pre></td></tr></table></div></div>
+        </div>
+
+
+<p>Look at you go, with your fresh new <code>spec</code> folder in the root directory. Get testing!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating an Admin Controller]]></title>
