@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Installing Rspec in Rails"
+title: "Installing RSpec in Rails"
 date: 2014-10-08 13:34:35 -0600
 comments: true
 categories:
