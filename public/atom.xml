@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-08T14:10:35-06:00</updated>
+  <updated>2014-10-18T10:59:14-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -14,7 +14,61 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Installing Rspec in Rails]]></title>
+    <title type="html"><![CDATA[Using Scopes]]></title>
+    <link href="http://www.railsmicrowins.com/blog/2014/10/17/using-scopes/"/>
+    <updated>2014-10-17T14:52:32-06:00</updated>
+    <id>http://www.railsmicrowins.com/blog/2014/10/17/using-scopes</id>
+    <content type="html"><![CDATA[<p>Scopes allow you to make (what amounts to) helper methods for
+commonly used Active Record queries.</p>
+
+<p>For example, we can easily display a restaurant&rsquo;s appropriate
+seasonal menu using scopes. Within the model, we&rsquo;ll build a scope
+for items on the winter seasonal menu:</p>
+
+<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">seasonal_menu</span><span class="p">:</span> <span class="s2">&quot;winter&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In our items controller now, we can call <code>Item.winter</code> to pass
+only those items on the winter menu to our view. We also experience
+the joy of pushing logic from our controller, down to the model.</p>
+
+<p>Scopes can also be chained, to form more specific queries:</p>
+
+<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">seasonal_menu</span><span class="p">:</span> <span class="s2">&quot;winter&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter_high_carb</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">winter</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;carbs &gt; 30&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Another common use case for scopes is to redefine how our query results
+are ordered by default. The helper method <code>default_scope</code> exists:</p>
+
+<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">default_scope</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;name ASC&#39;</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, items will now be displayed in alphabetical order by default.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing RSpec in Rails]]></title>
     <link href="http://www.railsmicrowins.com/blog/2014/10/08/installing-rspec-in-rails/"/>
     <updated>2014-10-08T13:34:35-06:00</updated>
     <id>http://www.railsmicrowins.com/blog/2014/10/08/installing-rspec-in-rails</id>
