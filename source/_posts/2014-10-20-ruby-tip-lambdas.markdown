@@ -35,5 +35,5 @@ name_giver.call("Wes")  # => "Your name is Wes"
 ```
 
 For one example of how lambdas are used in rails, see the post on
-[scopes]("/blog/2014/10/17/using-scopes/"). Note the usage of the alternative syntax
+[scopes](/blog/2014/10/17/using-scopes/). Note the usage of the alternative syntax
 using `->`, also known as a lambda literal, or a dash rocket.

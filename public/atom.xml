@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-20T10:17:09-06:00</updated>
+  <updated>2014-10-20T10:19:06-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -51,7 +51,7 @@ on the variable ( <code>name_giver.call</code> ).</p>
 
 
 <p>For one example of how lambdas are used in rails, see the post on
-<a href="" title="/blog/2014/10/17/using-scopes/">scopes</a>. Note the usage of the alternative syntax
+<a href="http://www.railsmicrowins.com/blog/2014/10/17/using-scopes/">scopes</a>. Note the usage of the alternative syntax
 using <code>-&gt;</code>, also known as a lambda literal, or a dash rocket.</p>
 ]]></content>
   </entry>
