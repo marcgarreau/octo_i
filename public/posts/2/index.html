@@ -9,7 +9,8 @@
   <meta name="author" content="Marc Garreau">
 
   
-  <meta name="description" content="Paperclip allows us to upload, store and display images (and other files) in an application. In this example, we&rsquo;ll go from installation to &hellip;">
+  <meta name="description" content="Why create an Admin Controller? It is easy enough to use something like CanCanCan
+to implement authorization, so why then would you need a separate &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -62,6 +63,102 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/07/creating-an-admin-controller-in-rails/">Creating an Admin Controller</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-07T19:21:52-06:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Why create an Admin Controller?</h2>
+
+<p>It is easy enough to use something like <a href="https://github.com/CanCanCommunity/cancancan">CanCanCan</a>
+to implement authorization, so why then would you need a separate Admin Controller for your application?</p>
+
+<p>While CanCanCan provides a good base, adding an Admin Controller provides another layer of protection,
+as the routes you are trying to protect simply do not exist unless you are properly authenticated as an Admin.</p>
+
+<p>It is easy to leave a route unprotected or make a mistake if your edit/create/update/destroy routes are in
+your public controllers, and having an Admin Controller helps prevent mistakes.</p>
+
+<h2>Implementation</h2>
+
+<ol>
+<li>Within app/controllers, create another directory called &lsquo;admin&rsquo; and create an <code>admin_controller.rb</code> in that new directory.</li>
+<li>Create each individual controller that you want in the admin namespace. For example, if you would like to only allow an admin to edit or delete an item, create a new Items Controller with those actions inside of the controllers/admin folder.</li>
+<li>Remove the newly protection actions from the old Items Controller, leaving only those actions that you&rsquo;d like users to access (e.g. show and index).</li>
+<li>Add the admin namespace to your routes file:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>routes.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">namespace</span> <span class="ss">:admin</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:items</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:items</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that our old Item Controller still maintains it&rsquo;s own routes, which we specify with <code>:index</code> and <code>:show</code>.</p>
+
+<p>Now when we <code>rake routes</code>, you&rsquo;ll see the newly created namespaced routes:</p>
+
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal"><table><tr><td class='gutter'><pre class='line-numbers'><span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span>
+<span class='line-number'>&nbsp;</span></pre></td><td class='code'><pre><code><span class='line output'>new_admin_item  GET   admin/items/new         admin/items#new
+</span><span class='line output'>   admin_items  POST  admin/items(.:format)   admin/items#create
+</span><span class='line output'>
+</span><span class='line output'>  # etc...</span></code></pre></td></tr></table></div></div>
+        </div>
+
+
+<h2>Sticking Point</h2>
+
+<p>Note that you will have to customize the POST from your admin forms:
+<code>&lt;%= form_for(@item, :url =&gt; admin_item_path(@item) ) do |f| %&gt;</code></p>
+
+<p><em>Authored by Ian Andersen (<a href="http://twitter.com/ianderse27">@ianderse27</a>). The original post is available <a href="http://mindfulprogramming.com/creating-an-admin-controller-in-rails/">here</a>.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
