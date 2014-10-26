@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Rails Micro Wins</title>
+  <title>Using Polymorphic Relationships - Rails Micro Wins</title>
   <meta name="author" content="Marc Garreau">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.railsmicrowins.com">
+  <link rel="canonical" href="http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships">
   <link href="/favicon.ico" rel="icon">
   
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -60,15 +60,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/25/using-polymorphic-relationships/">Using Polymorphic Relationships</a></h1>
+      <h1 class="entry-title">Using Polymorphic Relationships</h1>
     
     
       <p class="meta">
@@ -91,7 +88,7 @@
   </header>
 
 
-  <div class="entry-content"><p>If your application has some type of activity feed, there&rsquo;s a reasonable chance that a polymorphic relationship is right or you.</p>
+<div class="entry-content"><p>If your application has some type of activity feed, there&rsquo;s a reasonable chance that a polymorphic relationship is right or you.</p>
 
 <p>In this example, we&rsquo;re going to allow a user to bookmark jobs and events, then view those in one bookmarks feed.</p>
 
@@ -164,92 +161,16 @@ the row will look similar, but have a <code>bookmarkable_type</code> of &ldquo;E
 
 <p>Now in our views, we&rsquo;re free to display a user&rsquo;s bookmarks however we choose to scope them.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/ruby-tip-lambdas/">Ruby Tip: Lambdas</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn"><a href="/about" title="About the author (Marc Garreau)" rel="author">Marc Garreau</a></span></span>
 
-<time datetime="2014-10-20T09:31:37-06:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have a background in a language like Javascript, you&rsquo;re likely familiar
-with the concept of lambdas, but for those who are just getting started with
-Ruby, lambdas are a likely source of confusion.</p>
-
-<p>In the most basic sense, a lambda is a method without a name. In Javascript, this
-is called an &ldquo;anonymous function.&rdquo; While they are methods, lambdas are also objects.
-This allows you to save the method to a variable to be used later.</p>
-
-<p>For example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">name_giver</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="s2">&quot;Your name is John&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="n">name_giver</span><span class="o">.</span><span class="n">call</span>  <span class="c1"># =&gt; &quot;Your name is John&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>First, notice the lambda syntax: <code>lambda</code> followed by a block inside of curly braces.
-On its own, this method could never be called in an application, because it is
-unnamed. For that reason, we store the method in a variable ( <code>name_giver</code> ). When we
-are ready to return the output of the lambda, we can do so with the <code>call</code> method
-on the variable ( <code>name_giver.call</code> ).</p>
-
-<p>Like other methods, lambdas can take parameters to be used in the block:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">name_giver</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="s2">&quot;Your name is </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'><span class="n">name_giver</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;Wes&quot;</span><span class="p">)</span>  <span class="c1"># =&gt; &quot;Your name is Wes&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>For one example of how lambdas are used in rails, see the post on
-<a href="/blog/2014/10/17/using-scopes/">scopes</a>. Note the usage of the alternative syntax
-using <code>-&gt;</code>, also known as a lambda literal, or a dash rocket.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/17/using-scopes/">Using Scopes</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -261,74 +182,38 @@ using <code>-&gt;</code>, also known as a lambda literal, or a dash rocket.</p>
   
 
 
-<time datetime="2014-10-17T14:52:32-06:00" pubdate data-updated="true"></time>
-        
-      </p>
+<time datetime="2014-10-25T20:43:24-06:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Scopes allow you to make (what amounts to) helper methods for
-commonly used Active Record queries.</p>
-
-<p>For example, we can easily display a restaurant&rsquo;s appropriate
-seasonal menu using scopes. Within the model, we&rsquo;ll build a scope
-for items on the winter seasonal menu:</p>
-
-<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">seasonal_menu</span><span class="p">:</span> <span class="s2">&quot;winter&quot;</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In our items controller now, we can call <code>Item.winter</code> to pass
-only those items on the winter menu to our view. We also experience
-the joy of pushing logic from our controller, down to the model.</p>
-
-<p>Scopes can also be chained, to form more specific queries:</p>
-
-<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">where</span><span class="p">(</span><span class="ss">seasonal_menu</span><span class="p">:</span> <span class="s2">&quot;winter&quot;</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">scope</span> <span class="ss">:winter_high_carb</span><span class="p">,</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">winter</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;carbs &gt; 30&quot;</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Another common use case for scopes is to redefine how our query results
-are ordered by default. The helper method <code>default_scope</code> exists:</p>
-
-<figure class='code'><figcaption><span>item.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">default_scope</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="s1">&#39;name ASC&#39;</span><span class="p">)</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In this case, items will now be displayed in alphabetical order by default.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/" data-via="" data-counturl="http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/20/ruby-tip-lambdas/" title="Previous Post: Ruby Tip: Lambdas">&laquo; Ruby Tip: Lambdas</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="2">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 
     </div>
   </div>
@@ -344,7 +229,10 @@ are ordered by default. The helper method <code>default_scope</code> exists:</p>
       var disqus_shortname = 'railsmicrowins';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/';
+        var disqus_url = 'http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

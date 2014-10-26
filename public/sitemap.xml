@@ -3,6 +3,14 @@
   
   
   <url>
+    <loc>http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/</loc>
+    
+    <lastmod>2014-10-25T20:43:24-06:00</lastmod>
+    
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://www.railsmicrowins.com/blog/2014/10/20/ruby-tip-lambdas/</loc>
     
     <lastmod>2014-10-20T09:31:37-06:00</lastmod>
@@ -45,21 +53,21 @@
   
   <url>
     <loc>http://www.railsmicrowins.com/404.html</loc>
-    <lastmod>2014-10-20T10:19:06-06:00</lastmod>
+    <lastmod>2014-10-26T13:03:18-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://www.railsmicrowins.com/blog/archives/</loc>
-    <lastmod>2014-10-20T10:19:06-06:00</lastmod>
+    <lastmod>2014-10-26T13:03:18-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://www.railsmicrowins.com/</loc>
-    <lastmod>2014-10-20T10:19:06-06:00</lastmod>
+    <lastmod>2014-10-26T13:03:18-06:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

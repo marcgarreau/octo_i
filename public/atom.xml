@@ -4,7 +4,7 @@
   <title><![CDATA[Rails Micro Wins]]></title>
   <link href="http://www.railsmicrowins.com/atom.xml" rel="self"/>
   <link href="http://www.railsmicrowins.com/"/>
-  <updated>2014-10-20T10:19:06-06:00</updated>
+  <updated>2014-10-26T13:03:18-06:00</updated>
   <id>http://www.railsmicrowins.com/</id>
   <author>
     <name><![CDATA[Marc Garreau]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Polymorphic Relationships]]></title>
+    <link href="http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships/"/>
+    <updated>2014-10-25T20:43:24-06:00</updated>
+    <id>http://www.railsmicrowins.com/blog/2014/10/25/using-polymorphic-relationships</id>
+    <content type="html"><![CDATA[<p>If your application has some type of activity feed, there&rsquo;s a reasonable chance that a polymorphic relationship is right or you.</p>
+
+<p>In this example, we&rsquo;re going to allow a user to bookmark jobs and events, then view those in one bookmarks feed.</p>
+
+<p>When it comes to building our data model, we have at least three options:</p>
+
+<ol>
+<li><strong>Users have many Jobs and many Events.</strong><br/>
+Having separate relationships will require separate database queries. Huge performance red flag.</li>
+<li><strong>Users have many Jobs and many Events, through a join table.</strong><br/>
+The disadvantage here is that the join table will have columns to account for both relationships: <code>job_id</code> and <code>event_id</code>.
+Everytime a job is bookmarked, the value for the <code>event_id</code> will be left blank/unused. Similarly, for every row representing a bookmarked
+event, there will be no value for the <code>job_id</code>. As our application grows, this inefficiency may result in a performance loss.</li>
+<li><strong>Users have many Bookmarks, which may be Jobs or Events, using a polymorphic relationship.</strong><br/>
+As you suspected, we&rsquo;re going to explore this option.</li>
+</ol>
+
+
+<p>First, create the migration:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">CreateBookmarks</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">create_table</span> <span class="ss">:bookmarks</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">references</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>      <span class="n">t</span><span class="o">.</span><span class="n">references</span> <span class="ss">:bookmarkable</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">polymorphic</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:bookmarks</span><span class="p">,</span> <span class="o">[</span><span class="ss">:user_id</span><span class="p">,</span> <span class="ss">:bookmarkable_id</span><span class="p">,</span> <span class="ss">:bookmarkable_type</span><span class="o">]</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="err">‘</span><span class="n">bookmarks_index</span><span class="err">’</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Our concern is here: <code>t.references :bookmarkable, polymorphic: true</code>.
+The result of this reference is that our bookmarks table will have column values for <code>bookmarkable_type</code> and <code>bookmarkable_id</code>.
+So, if a job is bookmarked, the row in the bookmarks table will have an <code>id</code>, the appropriate <code>user_id</code>, a <code>bookmarkable_type</code> of &ldquo;Job&rdquo;,
+and a <code>bookmarkable_id</code> of that job&rsquo;s <code>id</code>. Notice that we waste no fields on event-related properties. When an event is bookmarked,
+the row will look similar, but have a <code>bookmarkable_type</code> of &ldquo;Event&rdquo;.</p>
+
+<p>To complete this polymorphic association, we&rsquo;ll have to complete the related relationships:</p>
+
+<figure class='code'><figcaption><span>user.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:bookmarks</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>bookmark.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Bookmark</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:user</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:bookmarkable</span><span class="p">,</span> <span class="ss">polymorphic</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now in our views, we&rsquo;re free to display a user&rsquo;s bookmarks however we choose to scope them.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Tip: Lambdas]]></title>
