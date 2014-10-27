@@ -35,12 +35,12 @@ end
 ```
 
 Our concern is here: `t.references :bookmarkable, polymorphic: true`.
-The result of this reference is that our bookmarks table will have column values for `bookmarkable_type` and `bookmarkable_id`.
+The result of this reference is that our bookmarks table will have the columns `bookmarkable_type` and `bookmarkable_id`.
 So, if a job is bookmarked, the row in the bookmarks table will have an `id`, the appropriate `user_id`, a `bookmarkable_type` of "Job",
 and a `bookmarkable_id` of that job's `id`. Notice that we waste no fields on event-related properties. When an event is bookmarked,
 the row will look similar, but have a `bookmarkable_type` of "Event".
 
-To complete this polymorphic association, we'll have to complete the related relationships:
+To utilize this polymorphic association, we'll have to complete the related relationships:
 
 ```ruby user.rb
 class User < ActiveRecord::Base
